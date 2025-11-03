@@ -1,302 +1,92 @@
-# Internet Programming Exam - Doctor Who Episodes Explorer
-
-**Duration:** 2 hours  
-**Tools Allowed:** Any online resources, including AI assistants (ChatGPT, Claude, etc.)
-
-## Important Notice to Students
-
-This exam tests your ability to build working software using modern tools and techniques. **Using AI assistants is encouraged and expected** as part of professional development practice.
-
-### Grading Philosophy
-
-- ✅ **Basic functionality (60-70 points):** Display and basic interaction
-- ✅ **Robust handling (75-89 points):** Edge cases, error handling, polish
-- ✅ **Advanced features (90-100 points):** Extra functionality and optimization
-
-⚠️ **Critical:** Your code must work with the provided test data, which includes edge cases. Code that crashes, has obvious bugs, or fails to handle data variations will lose points.
-
-### Tips for Success
-
-1. **Test frequently** - Don't just assume it works
-2. **Check the console** for errors and warnings
-3. **Try different inputs** - Filter by different values, sort different columns
-4. **Read your code** - Make sure you understand what it does
-5. **Handle edge cases** - Not all data is perfect
+# How to do an exam for the Internet Programming course
 
-## Assignment Overview
-
-Build a website that allows users to explore Doctor Who episodes with sorting, filtering, and display capabilities. The Doctor Who series has been running for over 50 years with multiple actors playing the Doctor across different eras.
+## 0. Prerequisites
 
-## Data Source
-
-The data is available at:
-```
-https://raw.githubusercontent.com/sweko/internet-programming-adefinater/refs/heads/main/data/doctor-who-episodes.json
-```
-
-### Data Format
-
-The API returns an object with the episodes. This is an example episode object:
-
-```javascript
-{
-  "rank": 1,
-  "title": "Blink",
-  "series": 3,
-  "era": "Modern",
-  "broadcast_date": "2007-06-09",
-  "director": "Hettie MacDonald",
-  "writer": "Steven Moffat",
-  "plot": "Sally Sparrow receives a mysterious message...",
-  "doctor": {
-    "actor": "David Tennant",
-    "incarnation": "Tenth Doctor"
-  },
-  "companion": {
-    "actor": "Freema Agyeman",
-    "character": "Martha Jones"
-  },
-  "cast": [
-    {
-      "actor": "Carey Mulligan",
-      "character": "Sally Sparrow"
-    },
-    {
-      "actor": "Michael Obiora",
-      "character": "Billy Shipton"
-    }
-  ]
-}
-```
-
-**Note:** Some episodes may have missing or varied data (see Edge Cases section).
-
----
-
-## Requirements
-
-### Tier 1: Basic Requirements (60 points)
-
-These are the minimum requirements for a passing grade.
-
-#### 1. Data Loading (15 points)
-- Load episode data from the provided API endpoint
-- Display a loading indicator while fetching data
-- Show an error message if loading fails
-
-#### 2. Episode Display (20 points)
-Display episodes in a table with the following columns:
-- **Rank:** The episode's rank number
-- **Title:** Episode title
-- **Series:** Series number
-- **Era:** Classic, Modern, or Recent
-- **Year:** Broadcast year (extract from `broadcast_date`)
-- **Director:** Director name
-- **Writer:** Writer name
-- **Doctor:** Actor name and incarnation (format: "David Tennant (Tenth Doctor)")
-- **Companion:** Actor and character (format: "Freema Agyeman (Martha Jones)")
-- **Cast:** Number of additional cast members
-
-#### 3. Basic Sorting (15 points)
-- Clicking a column header should sort by that column
-- First click: ascending order
-- Second click: descending order
-- Indicate sort direction with an arrow (↑ or ↓)
-- **Note:** Era should sort in order: Classic, Modern, Recent
-
-#### 4. Basic Filtering (10 points)
-- Filter by episode name (partial match, case-insensitive)
-- Filter updates the display in real-time or on button click
-
----
-
-### Tier 2: Robust Implementation (25 points)
-
-These demonstrate understanding and attention to detail.
-
-#### 5. Edge Case Handling (15 points)
-
-Your code must gracefully handle the following real-world data issues:
-
-**Missing Companions (5 points)**
-- Some episodes have no companion (`companion` is `null` or missing)
-- Display should show "No companion" or similar, not crash or show "undefined"
+1. In order to do the exam for the Internet Programming course, you need to have a GitHub account. If you don't have one, go to [GitHub](https://github.com/) and create one. You can use your university email address, or any other email address you have access to.
+2. You need to have Git installed on your computer. If you don't have it, go to [Git](https://git-scm.com/) and install it. You can use the default settings for the installation.
+3. You need to have a code editor installed on your computer. You can use any code editor you like, but I recommend [Visual Studio Code](https://code.visualstudio.com/). You can use the default settings for the installation.
+4. You need to have Node.js installed on your computer. If you don't have it, go to [Node.js](https://nodejs.org/en/) and install it. You can use the default settings for the installation.
+5. You need to have a browser installed on your computer. You can use any browser you like, but I recommend [Google Chrome](https://www.google.com/chrome/). You can use the default settings for the installation.
+6. You need to be familiar with the basics of Git and GitHub. If you are not, go to [Git Handbook](https://guides.github.com/introduction/git-handbook/) and read the first two chapters: "Getting Started" and "Git Basics". You can skip the "Git Branching" chapter for now.
+7. You need to have TypeScript installed globally on your computer. If you don't have it, open a terminal and run the following command: `npm install -g typescript`. You can verify that it is installed by running the following command: `tsc --version`. It should print the version of TypeScript installed on your computer. If you get an error mentioning an execution policy, run the following command: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser` and try again.
 
-**Empty Cast Arrays (3 points)**
-- Some episodes have `cast: []`
-- Should display "0" or handle gracefully, not cause errors
-
-**Multiple Writers (4 points)**
-- Some episodes have writers like "Steven Moffat & Mark Gatiss"
-- Should display correctly and sort properly
-
-**Special Characters in Names (3 points)**
-- Titles may contain apostrophes, quotes, or slashes
-- Example: "The Doctor's Wife" or "Bad Wolf / The Parting of the Ways"
-- Must display correctly without breaking
 
-#### 6. Multiple Filter Support (5 points)
-- Filter by Era (dropdown: All, Classic, Modern, Recent)
-- Filters work together (name AND era)
-
-#### 7. Enhanced Sorting (5 points)
-- All displayed columns are sortable
-- Sort indicator clearly shows current sort column and direction
-- Companion and Doctor columns sort by actor name
-
----
-
-### Tier 3: Advanced Features (15 points)
-
-Choose **at least 2** of the following to demonstrate deeper understanding:
-
-#### Option A: Additional Filters (5 points)
-Add filters for:
-- Doctor (dropdown populated from data)
-- Companion (dropdown populated from data)
-- Director (dropdown populated from data)
-- Writer (dropdown populated from data)
-
-#### Option B: Cast Details (5 points)
-When showing cast count, make it interactive:
-- Click the number to show full cast list
-- Display as "Actor (Character)" for each member
-- Or show cast in a tooltip on hover
-
-#### Option C: Broadcast Decade (5 points)
-- Add a "Decade" column
-- Extract decade from broadcast_date
-- Format as "1960s", "1970s", "2000s", etc.
-- Make it sortable
-
-#### Option D: Plot Preview (5 points)
-- Add a "Plot" column
-- Show first 50 characters of plot
-- Don't cut words in half
-- End with "..." if truncated
-- Click to expand full plot (optional bonus)
-
-#### Option E: Data Validation (5 points)
-- Check for data quality issues on load
-- Log warnings to console for:
-  - Missing required fields
-  - Future broadcast dates
-  - Negative or zero rank
-  - Invalid era values
-- Display count of validation warnings
-
-#### Option F: Performance Optimization (5 points)
-- Implement efficient sorting (don't re-sort on every render)
-- Use event delegation for table clicks
-- Debounce filter inputs
-- Add comment explaining your optimization strategy
 
-#### Option G: Keyboard Navigation (5 points)
-- Support keyboard shortcuts:
-  - Tab through filters
-  - Enter to apply filters
-  - Arrow keys to change sort (when focused on headers)
-- Must work without mouse
+## 1. Fork the repository
 
-#### Option H: Your Choice (5 points)
-- Implement a creative feature you think would be useful
-- Add a comment explaining what it does and why
+1. Go to the exam repository page: [https://github.com/sweko/internet-programming-adefinater/](https://github.com/sweko/internet-programming-adefinater/)
+2. Click on the "Fork" button in the top right corner of the page. This will create a copy of the repository in your GitHub account.
+3. Go to your GitHub account and open the forked repository. The URL should be something like `https://github.com/<your-user-name-here>/internet-programming-adefinater`
 
----
 
-## Edge Cases in Test Data
+### 1.1 Sync your fork with the original repository
 
-⚠️ **Important:** The test data intentionally includes edge cases. Your code must handle:
+If you already forked the repository 
 
-- Episodes with `null` companions
-- Episodes with empty `cast` arrays
-- Writers with multiple names (e.g., "Name1 & Name2")
-- Titles with special characters (`'`, `"`, `/`)
-- Varying broadcast date formats (some may differ)
+1. Go to your forked repository page
+2. Click on the "Sync fork" button in the top right corner of the page. This will sync your fork with the original repository. More details are available [here](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork)
 
-**Code that crashes on edge cases will lose significant points.**
+## 2. Clone the repository
 
----
+1. Go to your forked repository page
+2. Click on the "Code" button in the top right corner of the page
+3. Copy the URL of the repository
+4. Open a terminal and run the following command: `git clone <url-of-the-repository>`. This will create a local copy of the repository on your computer. The URL should be something like `https://github.com/<your-user-name-here>/internet-programming-adefinater.git` *Make sure not to clone the original repository, but your forked repository - the string `sweko` should not be in your url*
 
-## Submission Requirements
+## 3. Make sure that you have the correct folder structure
 
-1. Complete the code in your assigned student folder
-2. Your submission should include:
-   - `index.html`
-   - `script.js`
-   - `styles.css`
-3. Your code must be your own work (even if assisted by AI)
-4. Test your code before submitting
+1. Locate the folder for the correct exam. For groups 1 and 2, the folder name is `alternative-one`. For group 3, the folder name is `alternative-two`.
 
----
+2. Inside that folder will be a folder called `docs`  and a folder called `code`. The `docs` folder contains the instructions for the exam.
 
-## Evaluation Criteria
+3. The `code` folder should contain folders with student ids. Locate the folder with your student id and open it. It should contain the starter code. This is where you will write your code for the exam.
 
-| Category | Points | Description |
-|----------|--------|-------------|
-| Data Loading | 15 | Correctly fetches and handles API data |
-| Display | 20 | Shows all required information correctly |
-| Basic Sorting | 15 | Implements sorting with direction indicators |
-| Basic Filtering | 10 | Name filter works correctly |
-| Edge Cases | 15 | Handles missing data, special characters gracefully |
-| Multiple Filters | 5 | Era filter + combination logic |
-| Enhanced Sorting | 5 | All columns sortable with proper logic |
-| Advanced Features | 15 | At least 2 advanced features implemented |
-| **Total** | **100** | |
 
----
+## 4. Do the exam
 
-## Technical Notes
+1. Open the markdown files in the `docs` folder in your browser. There are two files called `exam-specification.md` and `student-instructions.md`.
 
-### Era Sorting Order
-When sorting by Era, use this order:
-1. Classic (first)
-2. Modern
-3. Recent (last)
+2. **Carefully read the instructions for the exam**. If you have any questions, ask the instructor.
 
-### Date Handling
-- Extract year from `broadcast_date` (format: "YYYY-MM-DD")
-- For decade: extract year and format as "1960s", "1970s", etc.
+3. Execute the instructions for the exam. Note that the instructions may require you to do some research on your own, and that you may need to use the internet to find the information you need. You are allowed and expected to use online resources such as documentation, Stack Overflow, and AI assistants like ChatGPT to help you complete the exam.  
+However, you are not allowed to ask for help from anyone else.
 
-### Filter Behavior
-- Name filter: case-insensitive, partial match (contains)
-- Dropdown filters: exact match
-- Multiple filters: AND logic (all must match)
+## 5. Commit and push your changes
 
-### Sorting Behavior
-- Default sort: by rank (ascending)
-- Click header: toggle between ascending/descending
-- Only one column sorted at a time
+1. Open a terminal and navigate to the folder for the exam. The folder should be something like `<repository-folder>/<alternative>/code/<your-student-id>`
 
----
+2. Run the following command: `git add .`. This will add all the files in the folder to the staging area.
 
-## Recommended Approach
+3. Run the following command: `git commit -m "<your-commit-message-here>"`. This will commit your changes to the local repository. Make sure that your commit message is descriptive enough to understand what you did.
 
-1. **Start simple:** Get basic display working first
-2. **Test early:** Check for errors in console frequently  
-3. **Handle edge cases:** Add null checks and validations
-4. **Add features incrementally:** Don't try to do everything at once
-5. **Use AI effectively:** Ask for explanations, not just code
-6. **Understand your code:** Be able to explain what each part does
+4. Run the following command: `git push`. This will push your changes to your remote repository. Note, if the push fails, refer to the [FAQ](https://github.com/sweko/uacs-internet-programming-exams/blob/main/faq.md).
 
----
+## 5a. Commit and push your changes (alternative)
 
-## Academic Integrity
+1. Use the Visual Studio Code interface to commit and push your changes. More details are available [here](https://code.visualstudio.com/docs/sourcecontrol/intro-to-git)
 
-- You may use any online resources including AI assistants
-- Your final code must be your own submission
-- You must understand all code you submit
-- Identical submissions will be flagged for review
+## 6. Create a pull request
 
----
+1. Go to your forked repository page
 
-## Getting Help During Exam
+2. Click on the "Pull requests" tab
 
-- Raise your hand if you have questions about requirements
-- Check the console for error messages
-- Test with different filter/sort combinations
-- Read the error messages - they often tell you what's wrong
+3. Click on the "New pull request" button
 
----
+4. Click on the "Compare across forks" link
 
-**Good luck! Remember: Working code that handles edge cases beats fancy features that crash.**
+5. In the "base repository" dropdown, select the original repository, i.e. `sweko/internet-programming-adefinater`
+
+6. In the "head repository" dropdown, select your forked repository, i.e. `<your-user-name-here>/internet-programming-adefinater`
+
+7. Click on the "Create pull request" button
+
+8. Add a descriptive title for your pull request
+
+9. Add a descriptive description for your pull request (including your name and student id)
+
+Note that you can continue to push changes to your forked repository, and the pull request will automatically update with the new changes. However, you should not push any changes after the deadline for the exam has passed.
+
+## 7. Wait for the results
+
+The instructor will review your pull request and provide feedback on your work.
